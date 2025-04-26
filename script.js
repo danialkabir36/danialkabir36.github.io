@@ -1,26 +1,64 @@
-// Dark mode settings
-let isDarkMode = false;
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-// Theme toggle function
-function toggleTheme() {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle('dark-mode');
-    
-    // Update button text
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+// Initialize theme based on system preference or saved preference
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    body.classList.add('dark-mode');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
 }
 
-// Add click event to theme toggle button
-document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    // Save theme preference
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    
+    // Update icon
+    themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+});
 
-// Initialize theme on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Check if user has a theme preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-        isDarkMode = true;
-        document.body.classList.add('dark-mode');
-        document.getElementById('theme-toggle').textContent = 'Light Mode';
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('active');
+    const isOpen = navLinks.classList.contains('active');
+    menuToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
 }); 

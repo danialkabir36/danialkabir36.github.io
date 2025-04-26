@@ -1,3 +1,23 @@
+/* CSS Variables */
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #f5f5f5;
+    --text-color: #333;
+    --background-color: #fff;
+    --card-background: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --primary-color: #64B5F6;
+    --secondary-color: #424242;
+    --text-color: #f5f5f5;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 /* General Settings */
 * {
     margin: 0;
@@ -6,91 +26,70 @@
     font-family: 'Poppins', sans-serif;
 }
 
-:root {
-    --primary-color: #2196F3;
-    --secondary-color: #f5f5f5;
-    --text-color: #333;
-    --light-gray: #e0e0e0;
-    --background-color: #fff;
-    --card-background: #fff;
-    --shadow-color: rgba(0,0,0,0.1);
-}
-
-/* Dark Mode */
-body.dark-mode {
-    --primary-color: #64B5F6;
-    --secondary-color: #424242;
-    --text-color: #f5f5f5;
-    --light-gray: #616161;
-    --background-color: #121212;
-    --card-background: #1e1e1e;
-    --shadow-color: rgba(0,0,0,0.3);
-}
-
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+    color: var(--primary-color);
 }
 
 /* Navigation Bar */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: var(--card-background);
     box-shadow: 0 2px 5px var(--shadow-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
     z-index: 1000;
-    padding: 1rem 0;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
 
+.controls {
+    display: flex;
+    align-items: center;
+}
+
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
-/* Theme Toggle Button */
-.controls {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.theme-switcher {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.theme-switcher:hover {
-    opacity: 0.8;
+.logo h1 {
+    color: var(--text-color);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
-    margin-left: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -106,14 +105,14 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 8rem 2rem 4rem;
     text-align: center;
-    padding: 0 2rem;
-    background-color: var(--secondary-color);
-    margin-top: 80px;
+    background-color: var(--background-color);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .profile-image {
@@ -122,54 +121,43 @@ body {
     border-radius: 50%;
     margin-bottom: 2rem;
     border: 5px solid var(--primary-color);
-    object-fit: cover;
 }
 
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    max-width: 600px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 0 1rem;
-    transition: transform 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
+    color: var(--text-color);
 }
 
 /* About Section */
 .about {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 4rem 2rem;
+    background-color: var(--card-background);
 }
 
 .section-title {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 3rem;
-    color: var(--primary-color);
+    margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
 .about-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+}
+
+.about-text {
+    color: var(--text-color);
 }
 
 .about-info {
@@ -179,23 +167,32 @@ body {
 }
 
 .info-item {
-    background-color: var(--card-background);
+    background-color: var(--background-color);
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
+.info-item h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: var(--text-color);
+}
+
 /* Skills Section */
 .skills {
-    padding: 5rem 2rem;
-    background-color: var(--secondary-color);
+    padding: 4rem 2rem;
+    background-color: var(--background-color);
 }
 
 .skills-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
@@ -206,11 +203,16 @@ body {
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
+.skill-item h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
 .progress-bar {
     height: 10px;
-    background-color: var(--light-gray);
+    background-color: var(--secondary-color);
     border-radius: 5px;
-    margin-top: 1rem;
+    overflow: hidden;
 }
 
 .progress {
@@ -221,7 +223,8 @@ body {
 
 /* Portfolio Section */
 .portfolio {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
+    background-color: var(--card-background);
 }
 
 .portfolio-container {
@@ -233,7 +236,7 @@ body {
 }
 
 .portfolio-item {
-    background-color: var(--card-background);
+    background-color: var(--background-color);
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px var(--shadow-color);
@@ -254,11 +257,20 @@ body {
     padding: 1.5rem;
 }
 
+.portfolio-info h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-info p {
+    color: var(--text-color);
+}
+
 /* Footer */
 footer {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
     padding: 3rem 2rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .footer-container {
@@ -269,76 +281,164 @@ footer {
     gap: 2rem;
 }
 
+.footer-section h3 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
 .social-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 1rem;
 }
 
 .social-icon {
     color: var(--text-color);
-    font-size: 1.8rem;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--card-background);
-    box-shadow: 0 2px 5px var(--shadow-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
 .social-icon:hover {
     color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-/* Dark mode specific styles for social icons */
-body.dark-mode .social-icon {
-    background-color: var(--card-background);
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
     color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
 }
 
-body.dark-mode .social-icon:hover {
+.menu-toggle:hover {
     color: var(--primary-color);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-    .nav-container {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-background);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Improved Touch Targets */
+@media (hover: none) {
+    .btn,
+    .nav-links a,
+    .social-icon {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.cta-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button i {
+    font-size: 1.1rem;
+}
+
+.cta-button.primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button.primary:hover {
+    background: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+.cta-button.secondary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Dark mode styles for buttons */
+body.dark-mode .cta-button.secondary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .cta-button.secondary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .hero-buttons {
         flex-direction: column;
         gap: 1rem;
-        padding: 1rem;
-    }
-
-    .logo {
-        position: static;
-        transform: none;
-        order: 1;
-    }
-
-    .controls {
-        order: 2;
-        margin-bottom: 1rem;
-    }
-
-    .nav-links {
-        order: 3;
-        margin-left: 0;
-        display: none;
     }
     
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero {
-        margin-top: 120px;
+    .cta-button {
+        width: 100%;
+        justify-content: center;
     }
 } 
