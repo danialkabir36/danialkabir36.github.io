@@ -1,0 +1,42 @@
+const translations = {
+    fa: {
+        home: "خانه",
+        about: "درباره من",
+        skills: "مهارت ها",
+        portfolio: "نمونه کارها",
+        contact: "تماس با من",
+        downloadResume: "دانلود رزومه",
+        contactMe: "تماس با من",
+        age: "سن",
+        location: "محل سکونت",
+        education: "تحصیلات",
+        maritalStatus: "وضعیت تاهل",
+        single: "مجرد",
+        married: "متاهل",
+        email: "ایمیل",
+        phone: "تلفن",
+        socialNetworks: "شبکه های اجتماعی",
+        darkMode: "حالت شب",
+        lightMode: "حالت روز"
+    },
+    en: {
+        home: "Home",
+        about: "About Me",
+        skills: "Skills",
+        portfolio: "Portfolio",
+        contact: "Contact",
+        downloadResume: "Download Resume",
+        contactMe: "Contact Me",
+        age: "Age",
+        location: "Location",
+        education: "Education",
+        maritalStatus: "Marital Status",
+        single: "Single",
+        married: "Married",
+        email: "Email",
+        phone: "Phone",
+        socialNetworks: "Social Networks",
+        darkMode: "Dark Mode",
+        lightMode: "Light Mode"
+    }
+}; 
