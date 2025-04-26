@@ -158,12 +158,14 @@ body {
 
 .about-text {
     color: var(--text-color);
+    order: 1;
 }
 
 .about-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    order: 2;
 }
 
 .info-item {
@@ -347,6 +349,24 @@ footer {
     
     .nav-links li {
         margin: 0.5rem 0;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-text {
+        order: 2;
+    }
+
+    .about-info {
+        order: 1;
+        grid-template-columns: 1fr;
+    }
+
+    .info-item {
+        padding: 1.2rem;
     }
 }
 
